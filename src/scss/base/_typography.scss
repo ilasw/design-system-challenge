@@ -33,3 +33,8 @@
 @each $name, $value in $color-palette {
   @include make-utility-class(color, $value, color-#{$name});
 }
+
+.header {
+  @extend .text-lg;
+  @extend .color-purple
+}
