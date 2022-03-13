@@ -1,0 +1,55 @@
+$color-black: #141B2C;
+$color-black-overlay: #020713;
+
+$color-navy: #202A43;
+$color-navy-dark: #212944;
+$color-navy-darker: #27334F;
+
+$color-green: #82C94E;
+$color-gray: #CBDDF0;
+$color-blue: #4788C7;
+$color-carcoal: #425277;
+$color-purple: rebeccapurple;
+
+$color-red: #CD5050;
+
+$color-palette: (
+    white: #fff,
+    black: $color-black,
+    navy: $color-navy,
+    green: $color-green,
+    gray: $color-gray,
+    purple: $color-purple,
+    blue: $color-blue,
+    carcoal: $color-carcoal,
+    red: $color-red,
+);
+
+$typography-map: (
+  // name: size line-height font-weight
+    heading: (
+        sm: (1.875rem, 1.1, 700),
+        base: (2.25rem, 1.1, 700),
+        lg: (3rem, 1.1, 700),
+        xl: (3.75rem, 1.1, 700)
+    ),
+    text: (
+        base: (1rem, 1.5, 500),
+        sm: (.75rem, 1.5, 500),
+        lg: (1.125rem, 1.5, 500),
+        xl: (1.5rem, 1.5, 500)
+    ),
+);
+
+$spacing-map: (
+    base: 1rem,
+    sm: .75rem,
+    lg: 1.125rem,
+    xl: 1.5rem
+);
+
+$breakpoints: (
+    xs: 0,
+    md: 768,
+    lg: 1024,
+);

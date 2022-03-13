@@ -1,0 +1,45 @@
+@mixin make-utility-class($property, $value, $alias: null) {
+  $class-name: if($alias, $alias, $property);
+
+  .#{$class-name} {
+    #{$property}: $value;
+  }
+}
+
+@mixin make-responsive-utility-class($property, $value, $alias: null) {
+  @include make-utility-class($property, $value, $alias);
+
+  @each $bp, $pixels in $breakpoints {
+    @include media-breakpoint-up($bp) {
+      @include make-utility-class($property, $value, #{$bp}\:#{$alias});
+    }
+  }
+}
+
+@mixin media-breakpoint-up($breakpoint) {
+
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (min-width: #{$breakpoint-value}px) {
+      @content;
+    }
+
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (max-width: #{($breakpoint-value - 1)}px) {
+      @content;
+    }
+
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}

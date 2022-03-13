@@ -1,0 +1,11 @@
+@use '../abstract/variables';
+
+$directions: (t: top, b: bottom, l: left, r: right);
+
+@each $sizeName, $sizeValue in $spacing-map {
+
+  @each $directionLetter, $direction in $directions {
+    @include make-responsive-utility-class(padding-#{$direction}, $sizeValue, p#{$directionLetter}\-#{$sizeName});
+    @include make-responsive-utility-class(margin-#{$direction}, $sizeValue, m#{$directionLetter}\-#{$sizeName});
+  }
+}

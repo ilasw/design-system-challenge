@@ -1,0 +1,35 @@
+@use "sass:list";
+
+// Making size utility classes for typography
+@each $group, $rules in $typography-map {
+
+  @each $name, $values in $rules {
+    // making [text/heading]-[size] classes
+    .#{$group}-#{$name} {
+      font-size: list.nth($values, 1);
+      line-height: list.nth($values, 2);
+      font-weight: list.nth($values, 3);
+    }
+
+    // making [sm/md/lg]:[text/heading]-[size] classes
+    @each $bp, $size in $breakpoints {
+      @include media-breakpoint-up($bp) {
+        .#{$bp}\:#{$group}-#{$name} {
+          font-size: list.nth($values, 1);
+          line-height: list.nth($values, 2);
+          font-weight: list.nth($values, 3);
+        }
+      }
+    }
+  }
+}
+
+// weight
+@each $name, $value in (light: 300, regular: 400, medium: 500, bold: 700) {
+  @include make-utility-class(font-weight, $value, font-#{$name});
+}
+
+// colors
+@each $name, $value in $color-palette {
+  @include make-utility-class(color, $value, color-#{$name});
+}
