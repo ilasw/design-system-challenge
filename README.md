@@ -2,7 +2,7 @@
 
 ## Development
 
-To start development run `npm start`.  
+To start development run `npm run dev`.  
 It should compile all the SCSS files for you, as well as spin a local web server.
 
 ## Build and deploy
